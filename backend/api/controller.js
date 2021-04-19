@@ -1,24 +1,23 @@
-var request = require('request');
+'use strict';
 
-const apiKey = process.env.ZIPCODE_API_KEY || "hkCt1nW1wF1rppaEmoor7T9G4ta7R5wFSu8l1dokNz8y53gGZHDneWWVosbEYirC";
-const zipCodeURL = 'https://www.zipcodeapi.com/rest/';
+var properties = require('../package.json')
+var distance = require('../service/distance');
 
-var distance = {
-   find: function(req, res, next) {
-       request(zipCodeURL + apiKey 
-               + '/distance.json/' + req.params.zipcode1 + '/' 
-               + req.params.zipcode2 + '/mile',
-       function (error, response, body) {
-           if (!error && response.statusCode == 200) {
-               response = JSON.parse(body);
-               res.send(response);
-           } else {
-               console.log(response.statusCode + response.body);
-               res.send({distance: -1});
-           }
-       });
-
-   }
+var controllers = {
+   about: function(req, res) {
+       var aboutInfo = {
+           name: properties.name,
+           version: properties.version
+       }
+       res.json(aboutInfo);
+   },
+   get_distance: function(req, res) {
+           distance.find(req, res, function(err, dist) {
+               if (err)
+                   res.send(err);
+               res.json(dist);
+           });
+       },
 };
 
-module.exports = distance;
+module.exports = controllers;
