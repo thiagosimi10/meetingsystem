@@ -3,15 +3,16 @@
         <side-bar></side-bar>
     </div>
 </template>
-import Sidebar from '@/components/Sidebar/Sidebar.vue';
+<script>
+import Sidebar from '@/components/Sidebar/Sidebar.vue'
 export default {
     components: {
         Sidebar
     },
-    data() {
+    data () {
         return {
-            showModal: false,
-        };
-    },
-};
+            showModal: false
+        }
+    }
+}
 </script>

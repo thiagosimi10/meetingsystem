@@ -134,42 +134,42 @@
   </nav>
 </template>
 <script>
-import NavbarToggleButton from "@/components/NavbarToggleButton";
+import NavbarToggleButton from '@/components/NavbarToggleButton'
 export default {
-  name: 'Sidebar',
-  components: {
-    NavbarToggleButton,
-  },
-  props: {
-    logo: {
-      type: String,
-      default: "img/brand/green.png",
-      description: "Sidebar app logo",
+    name: 'Sidebar',
+    components: {
+        NavbarToggleButton
     },
-    autoClose: {
-      type: Boolean,
-      default: true,
-      description:
-        "Whether sidebar should autoclose on mobile when clicking an item",
+    props: {
+        logo: {
+            type: String,
+            default: 'img/brand/green.png',
+            description: 'Sidebar app logo'
+        },
+        autoClose: {
+            type: Boolean,
+            default: true,
+            description:
+            'Whether sidebar should autoclose on mobile when clicking an item'
+        }
     },
-  },
-  provide() {
-    return {
-      autoClose: this.autoClose,
-    };
-  },
-  methods: {
-    closeSidebar() {
-      this.$sidebar.displaySidebar(false);
+    provide () {
+        return {
+            autoClose: this.autoClose
+        }
     },
-    showSidebar() {
-      this.$sidebar.displaySidebar(true);
+    methods: {
+        closeSidebar () {
+            this.$sidebar.displaySidebar(false)
+        },
+        showSidebar () {
+            this.$sidebar.displaySidebar(true)
+        }
     },
-  },
-  beforeUnmount() {
-    if (this.$sidebar.showSidebar) {
-      this.$sidebar.showSidebar = false;
+    beforeUnmount () {
+        if (this.$sidebar.showSidebar) {
+            this.$sidebar.showSidebar = false
+        }
     }
-  },
-};
+}
 </script>
