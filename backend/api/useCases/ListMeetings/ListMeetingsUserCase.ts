@@ -1,7 +1,7 @@
 import { Meetings } from "../../entities/Meetings";
 import { IMeetingsRepository } from "../../repositories/IMeetingsRepository";
 
-export class ListMeetingUserCase {
+export class ListMeetingsUserCase {
 
     constructor(
         private meetingRepository: IMeetingsRepository,

@@ -14,7 +14,8 @@ import CloseButton from "./CloseButton";
 import Card from "./Cards/Card.vue";
 import StatsCard from "./Cards/StatsCard.vue";
 
-import SidebarPlugin from "./SidebarPlugin/index";
+import SidebarPlugin from "./SidebarPlugin/index";  
+import Calendar from './Calendar.vue';
 
 export {
     BaseInput,
@@ -30,5 +31,6 @@ export {
     BaseButton,
     BaseAlert,
     SidebarPlugin,
-    BaseNav
+    BaseNav,
+    Calendar
 };
