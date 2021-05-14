@@ -18,7 +18,30 @@ function list() {
     });
 }
 
+function save(params) {
+    return new Promise((resolve, reject) => {
+        axios({
+            url: `http://localhost:3000/meetings/save`,
+            method: 'POST',
+            params: {
+                calendarId: params.calendarId,
+                title: params.title,
+                category: "time",
+                start: params.start,
+                end: params.end
+            },
+        })
+            .then((resp) => {
+                resolve(resp.data);
+            })
+            .catch((err) => {
+                reject(err);
+            });
+    });
+}
+
 export const meetingService = {
     handleError(err) { defaultErrorHandler.handle(err); },
     list,
+    save,
 };

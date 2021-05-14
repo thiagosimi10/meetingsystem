@@ -8,7 +8,7 @@ export class ListMeetingsUserCase {
     ) {}
 
     async list() {
-        const listMeetings = await this.meetingRepository.listAll();
+        const listMeetings = this.meetingRepository.listAll();
 
         return listMeetings;
     }

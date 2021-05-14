@@ -3,14 +3,7 @@ import { IMeetingsRepository } from "../IMeetingsRepository";
 
 
 export class PostgresMeetingsRepository implements IMeetingsRepository {
-    private meetings: Meetings[] = [{
-        id: '3',
-        calendarId: '1',
-        title: 'Workshop Vinicius',
-        category: 'time',
-        start: '2021-05-14 15:00:00',
-        end: '2021-05-14 18:00:00',
-    }];
+    private meetings: Meetings[] = [];
 
     async findByPeriod(start: string): Promise<Meetings> {
         const meeting = this.meetings.find(start => meeting.start === start);
@@ -19,12 +12,23 @@ export class PostgresMeetingsRepository implements IMeetingsRepository {
     }
 
     async save(meeting: Meetings): Promise<void> {
+        const data = require('./dbmeetings.json')
+
+        data.push({
+            id: meeting.id,
+            calendarId: meeting.calendarId,
+            title: meeting.title,
+            category: "time",
+            start: meeting.start,
+            end: meeting.end
+        });
+
         this.meetings.push(meeting);
     }
 
     async listAll(): Promise<Meetings> {
-        const meeting = this.meetings.find(id => meeting.id > id);
+        const data = require('./dbmeetings.json')
 
-        return meeting;
+        return data;
     }
 }

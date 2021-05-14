@@ -30,8 +30,8 @@ export class CreateMeetingUserCase {
                 name: 'Thiago',
                 email: 'thiagosimi10@hotmail.com'
             },
-            subject: 'Primeiro email enviado',
-            body: '<h1>Testando envio de email</h1>'
+            subject: 'Reunião!',
+            body: '<h1>Prezado: </h1></br><h3>Reunião: ' + data.title + ' </h3></br><h3>Local: ' + data.category + '</h3>'
         })
     }
 

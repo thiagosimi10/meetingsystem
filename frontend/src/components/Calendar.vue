@@ -29,11 +29,7 @@
             :timezones="timezones"
             :disableDblClick="disableDblClick"
             :isReadOnly="isReadOnly"
-            @clickSchedule="onClickSchedule"
-            @clickDayname="onClickDayname"
-            @beforeDeleteSchedule="onBeforeDeleteSchedule"
-            @afterRenderSchedule="onAfterRenderSchedule"
-            @clickTimezonesCollapseBtn="onClickTimezonesCollapseBtn"
+            @beforeCreateSchedule="onBeforeCreateSchedule "
             />
     </div>
 </template>
@@ -45,6 +41,7 @@ import 'tui-calendar/dist/tui-calendar.css';
 import 'tui-date-picker/dist/tui-date-picker.css';
 import 'tui-time-picker/dist/tui-time-picker.css';
 import { meetingService } from '@/services/meeting.service';
+import moment from 'moment'
 
 export default {
     name: 'myCalendar',
@@ -145,7 +142,7 @@ export default {
                 },
                 time: function(schedule) {
                     return schedule.title + ' <i class="fa fa-refresh"></i>' + schedule.start;
-                }
+                },
             },
             useCreationPopup: true,
             useDetailPopup: true,
@@ -161,8 +158,16 @@ export default {
         loadMeetings() {
             meetingService.list()
                 .then((resp) => {
-                    this.scheduleList = resp.meetingRepository.meetings;
-                    console.log(resp.meetingRepository.meetings);
+                    this.scheduleList = resp;
+                })
+                .catch((err) => {
+                    meetingService.handleError(err);
+                });
+        },
+        saveMeeting(params) {
+            meetingService.save(params)
+                .then((resp) => {
+                    console.log(resp);
                 })
                 .catch((err) => {
                     meetingService.handleError(err);
@@ -207,43 +212,11 @@ export default {
                 this.setRenderRangeText();
             }
         },
-        onClickSchedule(res) {
-            console.group('onClickSchedule');
-            console.log('MouseEvent : ', res.event);
-            console.log('Calendar Info : ', res.calendar);
-            console.log('Schedule Info : ', res.schedule);
-            console.groupEnd();
-        },
-            onClickDayname(res) {
-            // view : week, day
-            console.group('onClickDayname');
-            console.log(res.date);
-            console.groupEnd();
-        },
-            onBeforeDeleteSchedule(res) {
-            console.group('onBeforeDeleteSchedule');
-            console.log('Schedule Info : ', res.schedule);
-            console.groupEnd();
-            const idx = this.scheduleList.findIndex(item => item.id === res.schedule.id);
-            this.scheduleList.splice(idx, 1);
-        },
-            onAfterRenderSchedule(res) {
-            console.group('onAfterRenderSchedule');
-            console.log('Schedule Info : ', res.schedule);
-            console.groupEnd();
-        },
-            onClickTimezonesCollapseBtn(timezonesCollapsed) {
-            // view : week, day
-            console.group('onClickTimezonesCollapseBtn');
-            console.log('Is Collapsed Timezone? ', timezonesCollapsed);
-            console.groupEnd();
-            if (timezonesCollapsed) {
-                this.theme['week.timegridLeft.width'] = '100px';
-                this.theme['week.daygridLeft.width'] = '100px';
-            } else {
-                this.theme['week.timegridLeft.width'] = '50px';
-                this.theme['week.daygridLeft.width'] = '50px';
-            }
+        onBeforeCreateSchedule(event) {
+            event.start = moment(String(event.start.toDate())).format('YYYY-MM-DD hh:mm:ss');
+            event.end = moment(String(event.end.toDate())).format('YYYY-MM-DD hh:mm:ss');
+                        
+            this.saveMeeting(event);            
         }
     },
     mounted() {

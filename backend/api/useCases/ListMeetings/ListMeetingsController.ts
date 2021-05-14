@@ -7,9 +7,9 @@ export class ListMeetingsController {
     ) {}
 
     async handle(request: Request, response: Response): Promise<Response> {
-        try {
+        try { 
             return response.status(200).json(
-                this.listMeetingsUserCase
+                await this.listMeetingsUserCase.list()
             )
         } catch (error) {
             return response.status(400).json({

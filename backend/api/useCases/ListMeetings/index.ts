@@ -12,4 +12,4 @@ const listMeetingsController = new ListMeetingsController(
     listMeetingsUserCase
 )
 
-export { listMeetingsUserCase, listMeetingsController }
+export { postgresMeetingsRepository, listMeetingsController }

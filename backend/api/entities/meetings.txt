@@ -1,2 +1,0 @@
-id,title,start,end,persons,category;
-1,'Workshop Vinicius', '2021-05-14 15:00:00', '2021-05-14 15:00:00', '['Thiago', 'Cleber', 'Vinicius']', 'Workshop';
