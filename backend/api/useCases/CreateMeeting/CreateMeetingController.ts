@@ -7,12 +7,13 @@ export class CreateMeetingController {
     ) {}
 
     async handle(request: Request, response: Response): Promise<Response> {
-        const { calendarId, title, category, start, end } = request.query;
+        const { calendarId, title, location, category, start, end } = request.query;
         
         try {
             await this.createMeetingUserCase.execute({
                 calendarId,
                 title,
+                location,
                 category,
                 start,
                 end

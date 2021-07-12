@@ -31,7 +31,7 @@ export class CreateMeetingUserCase {
                 email: 'thiagosimi10@hotmail.com'
             },
             subject: 'Reunião!',
-            body: '<h1>Prezado: </h1></br><h3>Reunião: ' + data.title + ' </h3></br><h3>Local: ' + data.category + '</h3>'
+            body: '<h1>Prezado: </h1></br><h3>Reunião: ' + data.title + ' </h3></br><h3>Local: ' + data.location + '</h3>'
         })
     }
 

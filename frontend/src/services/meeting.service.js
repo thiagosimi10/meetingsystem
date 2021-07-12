@@ -26,6 +26,7 @@ function save(params) {
             params: {
                 calendarId: params.calendarId,
                 title: params.title,
+                location: params.location,
                 category: "time",
                 start: params.start,
                 end: params.end

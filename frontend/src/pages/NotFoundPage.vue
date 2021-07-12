@@ -10,7 +10,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <router-link :to="{path:'/'}" class="navbar-brand">Site title</router-link>
+          <router-link :to="{path:'/'}" class="navbar-brand">EPAAAAA</router-link>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -31,7 +31,7 @@
           <div class="row">
             <div class="col-md-8 col-md-offset-2 text-center">
               <h2 class="title text-danger">404 Not Found</h2>
-              <h2 class="title">Oops! It seems that this page does not exist.</h2>
+              <h2 class="title">Moioooo!!!</h2>
             </div>
           </div>
         </div>

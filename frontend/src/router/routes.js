@@ -9,6 +9,7 @@ const Notifications = () => import(/* webpackChunkName: "common" */"@/pages/Noti
 const Icons = () => import(/* webpackChunkName: "common" */ "@/pages/Icons.vue");
 const TableList = () => import(/* webpackChunkName: "common" */ "@/pages/TableList.vue");
 const Meetings = () => import(/* webpackChunkName: "common" */ "@/pages/Meetings.vue");
+const MeetingNote = () => import(/* webpackChunkName: "common" */ "@/pages/MeetingNote.vue");
 
 const routes = [
   {
@@ -45,6 +46,11 @@ const routes = [
         path: "meetings",
         name: "meetings",
         component: Meetings
+      },
+      {
+        path: "meetingnote",
+        name: "meetingnote",
+        component: MeetingNote
       }
     ]
   },

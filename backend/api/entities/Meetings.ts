@@ -5,6 +5,7 @@ export class Meetings {
     
     public calendarId: string;
     public title: string;
+    public location: string;
     public category: string;
     public start: string;
     public end: string;

@@ -18,6 +18,7 @@ export class PostgresMeetingsRepository implements IMeetingsRepository {
             id: meeting.id,
             calendarId: meeting.calendarId,
             title: meeting.title,
+            location: meeting.location,
             category: "time",
             start: meeting.start,
             end: meeting.end

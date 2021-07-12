@@ -1,4 +1,3 @@
-import { Collection } from "typescript";
 import { Meetings } from "../entities/Meetings";
 
 export interface IMeetingsRepository {
